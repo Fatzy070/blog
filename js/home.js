@@ -9,7 +9,7 @@
   const year =  new Date().getFullYear();
   box.innerText = `Copy @ ${year}. All Right Deserved `
 
-  fetch('http://localhost:3000/blogs')
+  fetch('https://blog-backend-xffy.onrender.com/blogs')
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById('blogs')
@@ -18,7 +18,7 @@
       const div = document.createElement('div')
        div.className = 'blog-card'
       div.innerHTML = ` 
-      ${blog.image ? `<img src="http://localhost:3000/images/${blog.image}" > ` : '' }
+      ${blog.image ? `<img src="https://blog-backend-xffy.onrender.com/images/${blog.image}" > ` : '' }
         <div class='line'> 
         <h3>${blog.headline}</h3>
            <p> <i>${blog.blog}</i></p>
@@ -43,7 +43,7 @@
       const deleteBtn = div.querySelector('.delete-btn')
       deleteBtn.addEventListener('click', () => {
         if (confirm("Are you sure you want to delete this blog?")) {
-          fetch(`http://localhost:3000/blogs/${blog._id}`, {
+          fetch(`https://blog-backend-xffy.onrender.com/blogs/${blog._id}`, {
             method: 'DELETE'
           })
             .then(res => res.json())
@@ -54,7 +54,7 @@
             .catch(err => console.error('Error deleting:', err))
         }
       })
-      
+
     })
   })
   .catch(err => console.error('error' , err))
@@ -68,7 +68,7 @@ form.addEventListener('submit', function (e) {
 
   const formData = new FormData(form)
 
-  fetch('http://localhost:3000/blogs', {
+  fetch('https://blog-backend-xffy.onrender.com/blogs', {
     method: 'POST',
     body: formData
   })
